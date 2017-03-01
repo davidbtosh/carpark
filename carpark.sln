@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carpark.api", "carpark.api\carpark.api.csproj", "{D0030A2E-1F06-4CC5-B4C5-2BC9845ED135}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carpark.api.Tests", "carpark.api.Tests\carpark.api.Tests.csproj", "{576B2AE3-AE1E-43FC-AC37-C01F4BC2D86F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "carpark.api.tests", "carpark.api.Tests\carpark.api.tests.csproj", "{576B2AE3-AE1E-43FC-AC37-C01F4BC2D86F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

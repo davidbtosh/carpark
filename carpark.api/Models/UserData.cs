@@ -58,5 +58,16 @@ namespace carpark.api.Models
                 return hours;
             }
         }
+
+        public int TotalDays
+        {
+            get
+            {
+                double d = TotalHours / 24;
+                int days = Convert.ToInt32(Math.Truncate(d));
+
+                return days;
+            }
+        }
     }
 }

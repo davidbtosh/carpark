@@ -21,9 +21,10 @@ namespace carpark.api.Tests.Controllers
             RatesController controller = new RatesController();
 
             // Act
-            //this date is a wednesday so weekend rate not applicable
-            //entry is 6PM so early bird not applicable
-            //6PM entry and 11 PM exit on weekday should use Night rate
+            //weekday 
+            //entry is 6PM 
+            //6PM entry and 11PM exit
+            //Night rate
 
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
             DateTime exit = DateTime.Parse("2017-03-01 23:00:00");
@@ -43,9 +44,10 @@ namespace carpark.api.Tests.Controllers
             RatesController controller = new RatesController();
 
             // Act
-            //this date is a wednesday so weekend rate not applicable
-            //entry is 6PM so early bird not applicable
-            //6PM entry and 5AM exit (next day) on weekday should use Night rate
+            //weekday 
+            //entry is 6PM 
+            //6PM entry and 5AM exit (next day) 
+            //Night rate
 
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
             DateTime exit = DateTime.Parse("2017-03-02 05:00:00");
@@ -65,9 +67,8 @@ namespace carpark.api.Tests.Controllers
             RatesController controller = new RatesController();
 
             // Act
-            //this date is a wednesday so weekend rate not applicable
-            //entry is 5PM so early bird not applicable
-            //5PM entry is too early for night rate
+            //weekday 
+            //entry is 5PM 
             //will use hourly rate
             DateTime entry = DateTime.Parse("2017-03-01 17:00:00");
             DateTime exit = DateTime.Parse("2017-03-01 23:00:00");
@@ -75,9 +76,9 @@ namespace carpark.api.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual("Hourly Rate", result.RateName);
-            Assert.AreEqual("Flat Rate", result.RateType);
-            Assert.AreEqual(6.50M, result.RatePrice);
+            Assert.AreEqual("Standard Rate", result.RateName);
+            Assert.AreEqual("Hourly Rate", result.RateType);
+            Assert.AreEqual(20M, result.RatePrice);
         }
 
 

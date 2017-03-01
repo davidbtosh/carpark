@@ -46,8 +46,12 @@ namespace carpark.api.Services
             if (hr == null)
             {
                 hr = HourlyRates.Find(f => f.IsMaxRate);
+                if(ud.TotalDays > 1)
+                {
+                    hr.RatePrice = hr.RatePrice * ud.TotalDays;
+                }
             }
-            return hr;
+            return hr as Rate;
         }
 
 

@@ -86,6 +86,44 @@ namespace carpark.api.Tests.Models
         }
 
         [TestMethod]
+        public void TotalDaysSameDayTest()
+        {
+            DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
+            DateTime exit = DateTime.Parse("2017-03-01 19:00:00");
+            UserData ud = new UserData(entry, exit);
+
+            // Assert
+            Assert.AreEqual(0, ud.TotalHours);
+
+        }
+
+        [TestMethod]
+        public void TotalDaysNextDayTest()
+        {
+            // Arrange
+            DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
+            DateTime exit = DateTime.Parse("2017-03-02 05:00:00");
+            UserData ud = new UserData(entry, exit);
+
+            // Assert
+            Assert.AreEqual(11, ud.TotalHours);
+
+        }
+
+        [TestMethod]
+        public void TotalDaysThreeDayTest()
+        {
+            // Arrange
+            DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
+            DateTime exit = DateTime.Parse("2017-03-04 18:00:00");
+            UserData ud = new UserData(entry, exit);
+
+            // Assert
+            Assert.AreEqual(72, ud.TotalHours);
+
+        }
+
+        [TestMethod]
         public void DayOfWeekTest()
         {
             // Arrange
