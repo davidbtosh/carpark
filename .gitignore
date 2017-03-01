@@ -3,3 +3,8 @@
 ################################################################################
 
 /carpark.api/obj/Debug
+/carpark.api/bin
+/carpark.api.Tests/obj/Debug
+/carpark.api.Tests/bin/Debug
+/obj/Debug
+/packages

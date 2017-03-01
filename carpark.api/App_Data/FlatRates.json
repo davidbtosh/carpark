@@ -1,0 +1,38 @@
+﻿[
+  {
+    "RateName": "Early Bird",
+    "RateType": "Flat Rate",
+    "RatePrice": "13.00",
+    "EntryStart": "6.0",
+    "EntryEnd": "9.0",
+    "ExitStart": "15.5",
+    "ExitEnd": "23.5",
+    "StartDay": "1",
+    "EndDay": "7",
+    "OrderOfPrecedence" : "3"
+  },
+  {
+    "RateName": "Night Rate",
+    "RateType": "Flat Rate",
+    "RatePrice": "6.5",
+    "EntryStart": "18.0",
+    "EntryEnd": "24.0",
+    "ExitStart": "18.0",
+    "ExitEnd": "30.0",
+    "StartDay": "1",
+    "EndDay": "5",
+    "OrderOfPrecedence": "2"
+  },
+  {
+    "RateName": "Weekend Rate",
+    "RateType": "Flat Rate",
+    "RatePrice": "6.5",
+    "EntryStart": "0.0",
+    "EntryEnd": "48.0",
+    "ExitStart": "0.0",
+    "ExitEnd": "48.0",
+    "StartDay": "6",
+    "EndDay": "7",
+    "OrderOfPrecedence": "1"
+  }
+] 

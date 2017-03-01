@@ -1,0 +1,29 @@
+﻿[
+  {
+    "RateName": "Standard Rate",
+    "RateType": "Hourly Rate",
+    "RatePrice": "5.00",
+    "MaxHours": "1.0",
+    "IsMaxRate": "false"
+  },
+  {
+    "RateName": "Standard Rate",
+    "RateType": "Hourly Rate",
+    "RatePrice": "10.00",
+    "MaxHours": "2.0",
+    "IsMaxRate": "false"
+  },
+  {
+    "RateName": "Standard Rate",
+    "RateType": "Hourly Rate",
+    "RatePrice": "15.00",
+    "MaxHours": "3.0",
+    "IsMaxRate": "false"
+  },
+  {
+    "RateName": "Standard Rate",
+    "RateType": "Hourly Rate",
+    "RatePrice": "20.00",
+    "MaxHours": "0.0",
+    "IsMaxRate": "true"
+  }
