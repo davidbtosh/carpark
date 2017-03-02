@@ -13,7 +13,22 @@ namespace carpark.api.Services
 {
     public class RatesCalculator : IRatesCalculator
     {
-       
+        public Rate CalculateRate(UserUI userEntry)
+        {
+            var userData = new UserData(userEntry);
+
+            Rate rate = CalculateFlatRate(userData);
+
+            if (rate == null)
+            {
+                rate = CalculateHourlyRate(userData);
+            }
+
+            return rate;
+        }
+
+
+
         //FLAT RATE RULES
         Func<int, FlatRate, bool> entryDay = (dy, r) => { return dy.IsBetween(r.StartDay, r.EndDay); };
         Func<UserData, FlatRate, bool> entryTimes = (ud, r) => { return ud.EntryHour.IsBetween(r.EntryStart, r.EntryEnd) && ud.ExitHour.IsBetween(r.ExitStart, r.ExitEnd); };
@@ -23,18 +38,7 @@ namespace carpark.api.Services
             //find all rates that apply to the FLAT RATE RULES and return one with highest precedence
             //null if none apply
             var fr = FlatRates.FindAll(f => entryDay(ud.EntryDoW, f) && entryTimes(ud, f)).OrderBy(o => o.OrderOfPrecedence).FirstOrDefault();
-
-
-            foreach (var frt in FlatRates)
-            {
-                Debug.Write(frt.RateName);
-
-                bool ed = entryDay(ud.EntryDoW, frt);
-                bool et = entryTimes(ud, frt);
-
-            }
-
-            //return null;
+           
 
             return fr as Rate;
 
@@ -42,7 +46,7 @@ namespace carpark.api.Services
 
         public Rate CalculateHourlyRate(UserData ud)
         {
-            var hr = HourlyRates.FindAll(f => !f.IsMaxRate && ud.TotalHours <= f.MaxHours).OrderByDescending(o => o.MaxHours).FirstOrDefault();
+            var hr = HourlyRates.FindAll(f => !f.IsMaxRate && ud.TotalHours <= f.MaxHours).OrderBy(o => o.MaxHours).FirstOrDefault();
 
             if (hr == null)
             {
@@ -55,7 +59,7 @@ namespace carpark.api.Services
             return hr as Rate;
         }
 
-
+        public string FilePath { get; set; }
 
         private List<HourlyRate> _hourlyRates = null;
         private List<HourlyRate> HourlyRates
@@ -85,9 +89,8 @@ namespace carpark.api.Services
 
 
         private List<T> LoadRates<T>(string file)
-        {
-            string fp = Path.GetFullPath(AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"\..\..\..\carpark.api\App_Data\");
-            file = string.Format("{0}{1}", fp, file);
+        {                        
+            file = string.Format("{0}{1}", FilePath, file);
 
             using (StreamReader r = new StreamReader(file))
             {
@@ -96,5 +99,7 @@ namespace carpark.api.Services
                 return items;
             }
         }
+
+        
     }
 }

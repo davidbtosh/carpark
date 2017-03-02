@@ -33,20 +33,7 @@ namespace carpark.api.Models
                 return dow < 1 ? 7 : dow;
             }
         }
-        //public int ExitDoW
-        //{
-        //    get { return (int)Exit.DayOfWeek.; }
-        //}
-
-        //Func<DateTime, double> hourCalc = (dt) =>
-        //{
-        //    double dm = 0;
-
-
-
-        //    return dm;
-        //};
-
+       
         public double EntryHour
         {
             get { return Entry.TimeOfDay.TotalHours; }
@@ -63,14 +50,13 @@ namespace carpark.api.Models
             }
         }
 
-        public int TotalHours
+        public double TotalHours
         {
             get
             {
                 TimeSpan diff = Exit - Entry;
-                int hours = Convert.ToInt32(Math.Truncate(diff.TotalHours));
-
-                return hours;
+                
+                return diff.TotalHours;
             }
         }
 

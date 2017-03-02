@@ -96,7 +96,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\RatesControllerTest.cs" />
-    <Compile Include="Service\RatesCalculatorTest.cs" />
+    <Compile Include="Service\FixedRatesEarlyBirdCalcTest.cs" />
+    <Compile Include="Service\StandardRatesHourlyCalcTest.cs" />
+    <Compile Include="Service\FixedRatesWeekendCalcTest.cs" />
+    <Compile Include="Service\FixedRatesNightCalcTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />

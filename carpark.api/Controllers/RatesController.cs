@@ -14,8 +14,10 @@ namespace carpark.api.Controllers
         public RatesController(IRatesCalculator ratesCalculator)
         {
             _ratesCalculator = ratesCalculator;
-        }               
-        
+        }
+
+        [Route("api/Rates/CalculateRates")]
+        [HttpPost]
         public HttpResponseMessage CalculateRates([FromBody]UserUI userEntry)
         {
             HttpResponseMessage response; 
@@ -26,14 +28,8 @@ namespace carpark.api.Controllers
 
                 if (response.StatusCode == HttpStatusCode.OK)                
                 {
-                    var userData = new UserData(userEntry);
 
-                    Rate rate = _ratesCalculator.CalculateFlatRate(userData);
-
-                    if (rate == null)
-                    {
-                        rate = _ratesCalculator.CalculateHourlyRate(userData);
-                    }
+                    var rate = _ratesCalculator.CalculateRate(userEntry);
 
                     response = Request.CreateResponse(HttpStatusCode.OK, rate);
                 }                

@@ -10,6 +10,7 @@ using carpark.api.Controllers;
 using carpark.api.Models;
 using carpark.api.Services;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace carpark.api.Tests.Controllers
 {
@@ -20,7 +21,10 @@ namespace carpark.api.Tests.Controllers
 
         public RatesControllerTest()
         {
-            _controller = new RatesController(new RatesCalculator());
+            var calculator = new RatesCalculator();
+            calculator.FilePath = Path.GetFullPath(AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"\..\..\..\carpark.api\App_Data\");
+
+            _controller = new RatesController(calculator);
             _controller.Request = new HttpRequestMessage();
             _controller.Request.SetConfiguration(new HttpConfiguration());
         }

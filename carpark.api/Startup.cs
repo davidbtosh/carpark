@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using carpark.api.Services;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Owin;
 using Owin;
-using Microsoft.Extensions.DependencyInjection;
-using carpark.api.Services;
 
 [assembly: OwinStartup(typeof(carpark.api.Startup))]
 
@@ -21,7 +18,6 @@ namespace carpark.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IRatesCalculator, RatesCalculator>();
-
         }
     }
 }

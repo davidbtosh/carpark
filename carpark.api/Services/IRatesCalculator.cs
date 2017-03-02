@@ -7,5 +7,9 @@ namespace carpark.api.Services
         Rate CalculateFlatRate(UserData ud);
 
         Rate CalculateHourlyRate(UserData ud);
+
+        Rate CalculateRate(UserUI userEntry);
+
+        string FilePath { get; set; }
     }
 }

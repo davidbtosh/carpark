@@ -1,26 +1,38 @@
 ﻿@model carpark.api.Models.UserUI
 <h2>Carpark data entry</h2>
+<h5>This UI is very basic and I could have spent a lot more time on validation and making it look better but the exercise was really about the rates calculations in the API</h5>
 <div>
     <div class="panel panel-primary avt-addlInfo-border">
-        @using (Html.BeginForm("", ""))
+        @using (Html.BeginForm("Calculate", "Home"))
         {
         <div class="panel-body">
             <div class="container-fluid ">
                 <div class="row">
                     <div class="col-sm-4 col-md-4">
-                        @Html.LabelFor(m => m.Entry)
-                        @Html.TextBoxFor(m => m.Entry, new { @class = "form-control" })
+                        <h5>Date format is 'YYYY-MM-DD'</h5>
+                        @Html.LabelFor(m => m.EntryDate)
+                        @Html.TextBoxFor(m => m.EntryDate, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        <h5>Time format is 24 hour 'HH:MM'</h5>
+                        @Html.LabelFor(m => m.EntryTime)
+                        @Html.TextBoxFor(m => m.EntryTime, new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-4 col-md-4">
-                        @Html.LabelFor(m => m.Exit)
-                        @Html.TextBoxFor(m => m.Exit, new { @class = "form-control" })
+                        @Html.LabelFor(m => m.ExitDate)
+                        @Html.TextBoxFor(m => m.ExitDate, new { @class = "form-control" })
+                    </div>
+                    <div class="col-sm-4 col-md-4">
+                        @Html.LabelFor(m => m.ExitTime)
+                        @Html.TextBoxFor(m => m.ExitTime, new { @class = "form-control" })
                     </div>
                 </div>
             </div>
+            <p></p>
             <div class="row">
-                <div class="col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-4">
+                <div class="col-sm-4 col-md-4">
                     <button type="submit" id="submit" class="btn btn-sm btn-primary">Calculate</button>
                 </div>
             </div>
@@ -45,7 +57,7 @@
                 <div class="row">
                     <div class="col-sm-4 col-md-4">
                         @Html.LabelFor(m => m.RateDisplay.RatePrice)
-                        @Html.DisplayFor(m => m.RateDisplay.RatePrice.ToString("{0:C}"))
+                        @Html.DisplayFor(m => m.RateDisplay.RatePrice)
                     </div>
                 </div>
             </div>
