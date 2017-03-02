@@ -1,2 +1,55 @@
-﻿
-
+﻿@model carpark.api.Models.UserUI
+<h2>Carpark data entry</h2>
+<div>
+    <div class="panel panel-primary avt-addlInfo-border">
+        @using (Html.BeginForm("", ""))
+        {
+        <div class="panel-body">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        @Html.LabelFor(m => m.Entry)
+                        @Html.TextBoxFor(m => m.Entry, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        @Html.LabelFor(m => m.Exit)
+                        @Html.TextBoxFor(m => m.Exit, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-sm-offset-2 col-md-4 col-md-offset-4">
+                    <button type="submit" id="submit" class="btn btn-sm btn-primary">Calculate</button>
+                </div>
+            </div>
+        </div>
+        }
+        @if (Model.RateDisplay != null)
+        {
+        <div class="panel-body">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        @Html.LabelFor(m => m.RateDisplay.RateName)
+                        @Html.DisplayFor(m => m.RateDisplay.RateName)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        @Html.LabelFor(m => m.RateDisplay.RateType)
+                        @Html.DisplayFor(m => m.RateDisplay.RateType)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4 col-md-4">
+                        @Html.LabelFor(m => m.RateDisplay.RatePrice)
+                        @Html.DisplayFor(m => m.RateDisplay.RatePrice.ToString("{0:C}"))
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>

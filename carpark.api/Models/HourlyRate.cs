@@ -7,7 +7,7 @@ namespace carpark.api.Models
 {
     public class HourlyRate : Rate
     {
-        public int MaxHours{ get; set; }
+        public double MaxHours{ get; set; }
 
         public bool IsMaxRate { get; set; }
        

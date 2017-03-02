@@ -1,4 +1,5 @@
-﻿using System;
+﻿using carpark.api.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,15 @@ namespace carpark.api.Controllers
         {
             ViewBag.Title = "Home Page";
 
-            return View();
+            return View(new UserUI());
+        }
+
+        [HttpGet]
+        public ActionResult Calculate()
+        {
+            ViewBag.Title = "Home Page";
+
+            return View(new UserUI());
         }
     }
 }

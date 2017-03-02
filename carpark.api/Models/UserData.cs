@@ -14,6 +14,13 @@ namespace carpark.api.Models
             Entry = entry;
             Exit = exit;
         }
+
+        public UserData(UserUI userEntry)
+        {
+            Entry = Convert.ToDateTime(userEntry.Entry);
+            Exit = Convert.ToDateTime(userEntry.Exit); ;
+        }
+
         public DateTime Entry { get; set; }
 
         public DateTime Exit { get; set; }
@@ -31,20 +38,28 @@ namespace carpark.api.Models
         //    get { return (int)Exit.DayOfWeek.; }
         //}
 
+        //Func<DateTime, double> hourCalc = (dt) =>
+        //{
+        //    double dm = 0;
 
-        public int EntryHour
+
+
+        //    return dm;
+        //};
+
+        public double EntryHour
         {
-            get { return Entry.Hour; }
+            get { return Entry.TimeOfDay.TotalHours; }
         }
 
-        public int ExitHour
+        public double ExitHour
         {
             get
             {
                 TimeSpan diff = Exit.Date - Entry.Date;
                 int wholeDaysinHours = Convert.ToInt32(diff.TotalDays) * 24;
                 
-                return Exit.Hour + wholeDaysinHours;
+                return Exit.TimeOfDay.TotalHours + wholeDaysinHours;
             }
         }
 

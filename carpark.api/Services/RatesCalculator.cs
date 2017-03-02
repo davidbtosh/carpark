@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -21,17 +22,17 @@ namespace carpark.api.Services
         {
             //find all rates that apply to the FLAT RATE RULES and return one with highest precedence
             //null if none apply
-            var fr = FlatRates.FindAll(f => entryDay(ud.EntryDoW, f) && entryTimes(ud, f)).OrderBy(o => o.EndDay).FirstOrDefault();
+            var fr = FlatRates.FindAll(f => entryDay(ud.EntryDoW, f) && entryTimes(ud, f)).OrderBy(o => o.OrderOfPrecedence).FirstOrDefault();
 
 
-            //foreach (var frt in FlatRates)
-            //{
-            //    Debug.Write(frt.RateName);
+            foreach (var frt in FlatRates)
+            {
+                Debug.Write(frt.RateName);
 
-            //    bool ed = entryDay(ud.EntryDoW, frt);
-            //    bool et = entryTimes(ud, frt);
+                bool ed = entryDay(ud.EntryDoW, frt);
+                bool et = entryTimes(ud, frt);
 
-            //}
+            }
 
             //return null;
 
@@ -85,9 +86,8 @@ namespace carpark.api.Services
 
         private List<T> LoadRates<T>(string file)
         {
-            string filepath = ConfigurationManager.AppSettings.Get("pathtofiles");
-
-            file = string.Format("{0}{1}", filepath, file);
+            string fp = Path.GetFullPath(AppDomain.CurrentDomain.SetupInformation.ApplicationBase + @"\..\..\..\carpark.api\App_Data\");
+            file = string.Format("{0}{1}", fp, file);
 
             using (StreamReader r = new StreamReader(file))
             {

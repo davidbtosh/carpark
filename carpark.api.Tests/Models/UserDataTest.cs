@@ -9,19 +9,19 @@ namespace carpark.api.Tests.Models
     {
 
         [TestMethod]
-        public void ExitHourSameDayTest()
+        public void UserDataExitHourSameDayTest()
         {
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
-            DateTime exit = DateTime.Parse("2017-03-01 19:00:00");
+            DateTime exit = DateTime.Parse("2017-03-01 19:30:00");
             UserData ud = new UserData(entry, exit);
             
             // Assert
-            Assert.AreEqual(19, ud.ExitHour);
+            Assert.AreEqual(19.5, ud.ExitHour);
 
         }
 
         [TestMethod]
-        public void ExitHourNextDayTest()
+        public void UserDataExitHourNextDayTest()
         {
             // Arrange
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
@@ -34,7 +34,7 @@ namespace carpark.api.Tests.Models
         }
 
         [TestMethod]
-        public void ExitHourThreeDayTest()
+        public void UserDataExitHourThreeDayTest()
         {
             // Arrange
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
@@ -48,7 +48,7 @@ namespace carpark.api.Tests.Models
 
 
         [TestMethod]
-        public void TotalHoursSameDayTest()
+        public void UserDataTotalHoursSameDayTest()
         {
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
             DateTime exit = DateTime.Parse("2017-03-01 19:00:00");
@@ -60,7 +60,7 @@ namespace carpark.api.Tests.Models
         }
 
         [TestMethod]
-        public void TotalHoursNextDayTest()
+        public void UserDataTotalHoursNextDayTest()
         {
             // Arrange
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
@@ -73,7 +73,7 @@ namespace carpark.api.Tests.Models
         }
 
         [TestMethod]
-        public void TotalHoursThreeDayTest()
+        public void UserDataTotalHoursThreeDayTest()
         {
             // Arrange
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
@@ -86,19 +86,19 @@ namespace carpark.api.Tests.Models
         }
 
         [TestMethod]
-        public void TotalDaysSameDayTest()
+        public void UserDataTotalDaysSameDayTest()
         {
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
             DateTime exit = DateTime.Parse("2017-03-01 19:00:00");
             UserData ud = new UserData(entry, exit);
 
             // Assert
-            Assert.AreEqual(0, ud.TotalHours);
+            Assert.AreEqual(1, ud.TotalHours);
 
         }
 
         [TestMethod]
-        public void TotalDaysNextDayTest()
+        public void UserDataTotalDaysNextDayTest()
         {
             // Arrange
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
@@ -111,7 +111,7 @@ namespace carpark.api.Tests.Models
         }
 
         [TestMethod]
-        public void TotalDaysThreeDayTest()
+        public void UserDataTotalDaysThreeDayTest()
         {
             // Arrange
             DateTime entry = DateTime.Parse("2017-03-01 18:00:00");
@@ -124,7 +124,7 @@ namespace carpark.api.Tests.Models
         }
 
         [TestMethod]
-        public void DayOfWeekTest()
+        public void UserDataDayOfWeekTest()
         {
             // Arrange
             

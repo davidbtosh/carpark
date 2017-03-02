@@ -20,13 +20,13 @@
     "ExitStart": "18.0",
     "ExitEnd": "30.0",
     "StartDay": "1",
-    "EndDay": "5",
+    "EndDay": "6",
     "OrderOfPrecedence": "2"
   },
   {
     "RateName": "Weekend Rate",
     "RateType": "Flat Rate",
-    "RatePrice": "6.5",
+    "RatePrice": "10",
     "EntryStart": "0.0",
     "EntryEnd": "48.0",
     "ExitStart": "0.0",
